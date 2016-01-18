@@ -1,0 +1,40 @@
+#!/usr/bin/make -f
+
+configure :=  --ipt-src=../vyos-iptables --ipt-lib=/lib/xtables --kdir=../linux-image --disable-snmp-agent
+install :=
+
+%:
+	dh $@
+
+binary binary-arch binary-indep: install
+	rm -f debian/files
+	dh binary --before dh_gencontrol
+	if [ -f "../.VYOS_DEV_BUILD" ]; then \
+		dh_gencontrol -- -v999.dev; \
+	else \
+		dh_gencontrol; \
+	fi
+	dh binary --after dh_gencontrol
+
+ifneq ($(USE_BUILD_DIR),TRUE)
+
+include debian/builddir.mk
+
+else
+
+build: debian/stamp-build
+debian/stamp-build:
+	dh build --before dh_auto_configure
+	dh_auto_configure -- $(configure)
+	dh build --after dh_auto_configure --before dh_auto_test
+	dh build --after dh_auto_test
+	touch $@
+
+install: build debian/stamp-install
+debian/stamp-install:
+	dh install --before dh_install
+	dh_install $(install)
+	dh install --after dh_install
+	touch $@
+
+endif
