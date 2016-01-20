@@ -1,0 +1,6 @@
+ipt-netflow-code (2.1) unstable; urgency=high
+
+  [ Mihail Vasiliev ]
+  * ipt-netflow-code: initial import and debianisation
+
+ -- Mihail Vasiliev <mickvav@gmail.com>  Mon, 18 Jan 2016 13:51:23 +0400 

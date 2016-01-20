@@ -1,0 +1,18 @@
+Source: ipt-netflow-code
+Section: net
+Priority: important
+Maintainer: Mihail Vasiliev <mickvav@gmail.com>
+Build-Depends: debhelper (>>7.0), libtool, iptables-dev
+Standards-Version: 2.1
+Homepage: https://github.com/aabc/ipt-netflow
+
+
+Package: ipt-netflow-code
+Architecture: any
+Priority: important
+Section: net
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: High performance NetFlow v5, v9, IPFIX flow data export 
+   module for Linux kernel. Created to be useful for highly loaded linux 
+   router. It should be used as iptables target.
+
