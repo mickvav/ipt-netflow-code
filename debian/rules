@@ -1,6 +1,7 @@
 #!/usr/bin/make -f
 
-configure :=  --ipt-src=../../../vyos-iptables/debian/build --ipt-lib=/lib/xtables --kdir=$(shell echo ../../../linux-image/debian/build/build-*-vyos/) --disable-snmp-agent --disable-dkms
+#configure :=  --ipt-src=../../../vyos-iptables/debian/build --ipt-lib=/lib/xtables --kdir=$(shell echo ../../../vyos-kernel/) --disable-snmp-agent --disable-dkms
+configure :=  --ipt-lib=/lib/xtables --kdir=$(shell echo ../../../vyos-kernel/) --disable-snmp-agent --disable-dkms
 install :=
 
 %:
