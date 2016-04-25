@@ -36,6 +36,8 @@ debian/stamp-install:
 	dh install --before dh_install
 	dh_install $(install)
 	dh install --after dh_install
+#### Looks like upstream call to depmod generates conflicting files.
+	rm ../ipt-netflow-code/lib/modules/*/modules*
 	touch $@
 
 endif
