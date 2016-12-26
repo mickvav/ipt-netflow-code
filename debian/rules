@@ -37,7 +37,7 @@ debian/stamp-install:
 	dh_install $(install)
 	dh install --after dh_install
 #### Looks like upstream call to depmod generates conflicting files.
-	rm ../ipt-netflow-code/lib/modules/*/modules*
+	rm ../ipt-netflow-code/lib/modules/*/modules* || echo "Don't need to clean up anything on first build"
 	touch $@
 
 endif
